@@ -6,38 +6,53 @@ import ChatIcon from "@mui/icons-material/Chat";
 import MoreVerticalIcon from "@mui/icons-material/MoreVert";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SearchIcon from "@mui/icons-material/Search";
+import Button from "@mui/material/Button";
 
 const StyledContainer = styled.div`
-    height: 100vh;
-    min-width: 300px;
-    max-width: 350px;
-    overflow-y: scroll;
-    border-right: 1px solid whitesmoke;
+  height: 100vh;
+  min-width: 300px;
+  max-width: 350px;
+  overflow-y: scroll;
+  border-right: 1px solid whitesmoke;
 `;
 
 const StyledHeader = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    height: 80px;
-    border-bottom: 1px solid whitesmoke;
-    position: sticky;
-    top: 0;
-    background-color: white;
-    z-index: 1;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  height: 80px;
+  border-bottom: 1px solid whitesmoke;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
 `;
 
-const StyledSearch = styled.div``;
-
-const StyledSidebarButton = styled.button``;
+const StyledSearch = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 2px;
+`;
 
 const StyledUserAvatar = styled(Avatar)`
   cursor: pointer;
   :hover {
     opacity: 0.8;
   }
+`;
+
+const StyledSeacrhInput = styled.input`
+  outline: none;
+  border: none;
+  flex: 1;
+`;
+
+const StyledSidebarButton = styled(Button)`
+  width: 100%;
+  border-top: 1px solid whitesmoke;
+  border-bottom: 1px solid whitesmoke;
 `;
 
 const Sidebar = () => {
@@ -60,9 +75,12 @@ const Sidebar = () => {
         </div>
       </StyledHeader>
 
-      <StyledSearch></StyledSearch>
+      <StyledSearch>
+        <SearchIcon />
+        <StyledSeacrhInput placeholder="Search in conversations" />
+      </StyledSearch>
 
-      <StyledSidebarButton></StyledSidebarButton>
+      <StyledSidebarButton>Start new conversation</StyledSidebarButton>
 
       {/* List of conversations */}
     </StyledContainer>
