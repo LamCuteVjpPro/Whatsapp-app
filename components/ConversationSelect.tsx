@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Conversation } from "../types/index";
 import { useRecipient } from "@/hooks/useRecipient";
-import RecipientAvatar from '../components/RecipientAvatar'
+import RecipientAvatar from './RecipientAvatar'
 import { useRouter } from "next/router";
 
 const StyledContainer = styled.div`

@@ -26,7 +26,7 @@ const Loading = () => {
         />
       </StyledImageWrapper>
 
-      <CircularProgress/>
+      <CircularProgress />
     </StyledContainer>
   );
 };

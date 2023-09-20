@@ -18,7 +18,12 @@ import Message from "./Message";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import SendIcon from "@mui/icons-material/Send";
 import MicIcon from "@mui/icons-material/Mic";
-import { KeyboardEventHandler, MouseEventHandler, useRef, useState } from "react";
+import {
+  KeyboardEventHandler,
+  MouseEventHandler,
+  useRef,
+  useState,
+} from "react";
 import {
   addDoc,
   collection,
@@ -89,8 +94,8 @@ const StyledInput = styled.input`
 `;
 
 const EndOfMessagesForAutoScroll = styled.div`
-    margin-bottom: 30px;
-`
+  margin-bottom: 30px;
+`;
 
 const ConversationScreen = ({
   conversation,
@@ -148,8 +153,7 @@ const ConversationScreen = ({
 
     setNewMessage("");
 
-    // scroll to bottom 
-    scrollToBottom()
+    scrollToBottom();
   };
 
   const sendMessageOnEnter: KeyboardEventHandler<HTMLInputElement> = (
@@ -168,11 +172,11 @@ const ConversationScreen = ({
     addMessageToDbAndUpdateLastSeen();
   };
 
-  const endOfMessagesRef = useRef<HTMLDivElement>(null)
+  const endOfMessagesRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    endOfMessagesRef.current?.scrollIntoView({behavior: 'smooth'})
-  }
+    endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div>
@@ -199,12 +203,11 @@ const ConversationScreen = ({
           </IconButton>
         </StyledHeaderIcon>
       </StyledRecipientHeader>
-      <StyledMessagesContainer>{showMessages()}
-      {/* auto scroll message */}
-      <EndOfMessagesForAutoScroll ref={endOfMessagesRef}/>
+      <StyledMessagesContainer>
+        {showMessages()}
+        <EndOfMessagesForAutoScroll ref={endOfMessagesRef} />
       </StyledMessagesContainer>
 
-      {/* enter new message */}
       <StyledInputContainer>
         <InsertEmoticonIcon />
         <StyledInput

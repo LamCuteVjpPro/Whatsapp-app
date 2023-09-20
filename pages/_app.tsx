@@ -14,23 +14,23 @@ function MyApp({ Component, pageProps }: AppProps) {
     const setUserInDb = async () => {
       try {
         await setDoc(
-          doc(db, 'users', loggedInUser?.email as string),
+          doc(db, "users", loggedInUser?.email as string),
           {
             email: loggedInUser?.email,
             lastSeen: serverTimestamp(),
-            photoURL: loggedInUser?.photoURL
+            photoURL: loggedInUser?.photoURL,
           },
-          {merge: true}
-        )
+          { merge: true }
+        );
       } catch (error) {
-        console.log("ERROR SETTING USER INFO IN DB", error)
+        console.log("ERROR SETTING USER INFO IN DB", error);
       }
-    }
+    };
 
-    if(loggedInUser) {
-      setUserInDb()
+    if (loggedInUser) {
+      setUserInDb();
     }
-  }, [loggedInUser])
+  }, [loggedInUser]);
 
   if (loading) return <Loading />;
 

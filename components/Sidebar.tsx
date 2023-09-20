@@ -32,9 +32,8 @@ const StyledContainer = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
-  /* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
 
 const StyledHeader = styled.div`
@@ -94,7 +93,6 @@ const Sidebar = () => {
     toggleNewConversationDialog(false);
   };
 
-  // check if conversation already exists between the current logged in user and recipient
   const queryGetConversationForCurrentUser = query(
     collection(db, "conversations"),
     where("users", "array-contains", loggedInUser?.email)
@@ -164,7 +162,6 @@ const Sidebar = () => {
         Start new conversation
       </StyledSidebarButton>
 
-      {/* List of conversations */}
       {conversationSnapshot?.docs.map((conversation) => (
         <ConversationSelect
           key={conversation.id}

@@ -27,18 +27,15 @@ const StyledConversationContainer = styled.div`
   overflow: scroll;
   height: 100vh;
 
-  /* Hide scrollbar for Chrome, Safari and Opera */
   ::-webkit-scrollbar {
     display: none;
   }
-  /* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
 
 const Conversation = ({ conversation, messages }: Props) => {
   const [loggedInUser, _loading, _error] = useAuthState(auth);
-  // console.log(conversation);
   return (
     <StyledContainer>
       <Head>
@@ -64,12 +61,11 @@ export const getServerSideProps: GetServerSideProps<
   { id: string }
 > = async (context) => {
   const conversationId = context.params?.id;
-  console.log(context);
-  // get conversation, to know who we are chatting with
+
   const conversationRef = doc(db, "conversations", conversationId as string);
+
   const conversationSnapshot = await getDoc(conversationRef);
 
-  // get all messages between logged in user and recipient in this conversation
   const queryMessages = generateQueryGetMessages(conversationId);
 
   const messagesSnapshot = await getDocs(queryMessages);

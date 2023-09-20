@@ -24,14 +24,14 @@ const StyledReceiverMessage = styled(StyledMessage)`
 `;
 
 const StyledTimestamp = styled.span`
-    color: gray;
-    padding: 10px;
-    font-size: x-small;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    text-align: right;
-`
+  color: gray;
+  padding: 10px;
+  font-size: x-small;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+`;
 
 const Message = ({ message }: { message: IMessage }) => {
   const [loggedInUser, _loading, _error] = useAuthState(auth);
@@ -40,10 +40,12 @@ const Message = ({ message }: { message: IMessage }) => {
     loggedInUser?.email === message.user
       ? StyledSenderMessage
       : StyledReceiverMessage;
-  return <MessageType>
-    {message.text}
-    <StyledTimestamp>{message.sent_at}</StyledTimestamp>
-    </MessageType>;
+  return (
+    <MessageType>
+      {message.text}
+      <StyledTimestamp>{message.sent_at}</StyledTimestamp>
+    </MessageType>
+  );
 };
 
 export default Message;
